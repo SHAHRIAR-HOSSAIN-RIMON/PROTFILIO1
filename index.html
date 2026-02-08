@@ -12,13 +12,15 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --secondary: #8b5cf6;
-            --accent: #ec4899;
+            --primary: #059669;
+            --secondary: #0d9488;
+            --accent: #0891b2;
             --dark: #0f172a;
-            --light: #f1f5f9;
+            --light: #f8fafc;
             --text: #1e293b;
             --text-light: #64748b;
+            --gradient-start: #047857;
+            --gradient-end: #0d9488;
         }
 
         body {
@@ -37,8 +39,8 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            opacity: 0.05;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
+            opacity: 1;
         }
 
         .bg-animation::before {
@@ -48,7 +50,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, var(--primary) 1px, transparent 1px);
+            background: radial-gradient(circle, rgba(5, 150, 105, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: moveGrid 20s linear infinite;
         }
@@ -63,11 +65,12 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
             padding: 1rem 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
             z-index: 1000;
+            border-bottom: 1px solid rgba(5, 150, 105, 0.1);
         }
 
         nav .container {
@@ -82,7 +85,7 @@
         nav .logo {
             font-size: 1.5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -109,7 +112,7 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
             transition: width 0.3s;
         }
 
@@ -135,7 +138,7 @@
         .hero h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -159,7 +162,7 @@
         .hero-description .highlight {
             color: var(--primary);
             font-weight: 700;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -245,7 +248,7 @@
             transform: translateX(-50%);
             width: 60px;
             height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
             border-radius: 2px;
         }
 
@@ -282,7 +285,7 @@
         }
 
         .skill-tag {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             padding: 0.5rem 1rem;
             border-radius: 20px;
@@ -452,13 +455,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
         }
 
         .btn-primary:hover {
             transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 15px rgba(4, 120, 87, 0.4);
         }
 
         .btn-secondary {
@@ -558,7 +561,7 @@
         .cert-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -586,7 +589,7 @@
 
         /* Contact Section */
         .contact {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             color: white;
             text-align: center;
             padding: 5rem 2rem;
@@ -711,7 +714,7 @@
             right: 2rem;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -723,7 +726,7 @@
             visibility: hidden;
             transition: all 0.3s;
             z-index: 999;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
         }
 
         .scroll-top.visible {
@@ -745,19 +748,19 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
+            background: linear-gradient(135deg, rgba(4, 120, 87, 0.95), rgba(13, 148, 136, 0.95));
             padding: 2rem;
             border-radius: 15px;
             text-align: center;
             backdrop-filter: blur(10px);
             border: 2px solid rgba(255, 255, 255, 0.3);
             transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.3);
+            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.25);
         }
 
         .stat-card:hover {
             transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(99, 102, 241, 0.5);
+            box-shadow: 0 12px 35px rgba(5, 150, 105, 0.4);
         }
 
         .stat-number {
@@ -1120,7 +1123,6 @@
                     <div class="cert-icon">🤖</div>
                     <h3>Generative AI Bootcamp</h3>
                     <p class="issuer">LinkedIn Learning</p>
-                    <p class="date">2024</p>
                     <a href="https://www.linkedin.com/learning/certificates/ca4cc32ebfb2e6d11da08facecc6c8fecfcdd21e34b56cf708b3ef17022788c6" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
 
@@ -1128,7 +1130,6 @@
                     <div class="cert-icon">🛡️</div>
                     <h3>Cybersecurity Essentials</h3>
                     <p class="issuer">LinkedIn Learning</p>
-                    <p class="date">2024</p>
                     <a href="https://www.linkedin.com/learning/certificates/2d6613b5f0c558dca13a48bcebd5b0d8c9e37333ace67e0fbfef4c00e824937d?trk=share_certificate" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
 
@@ -1136,7 +1137,6 @@
                     <div class="cert-icon">⚙️</div>
                     <h3>MicroOps</h3>
                     <p class="issuer">Professional Certification</p>
-                    <p class="date">2024</p>
                     <a href="https://drive.google.com/file/d/1tJBE61HizLXcM01yX7mi-2s3FS-35Fzq/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
 
@@ -1144,7 +1144,6 @@
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 1</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <p class="date">2024</p>
                     <a href="https://drive.google.com/file/d/1d889Oqzilb9v9M4lPahk5G4fhz_MPaPk/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
 
@@ -1152,7 +1151,6 @@
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 2</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <p class="date">2024</p>
                     <a href="https://drive.google.com/file/d/1JCCET2saiLcqKsagYeih3ZabhHaiofVk/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
 
@@ -1160,7 +1158,6 @@
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 3</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <p class="date">2024</p>
                     <a href="https://drive.google.com/file/d/1-rHUD3NshZyFCCQmfmQjL8sjWO1OaBKb/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
 
@@ -1168,7 +1165,6 @@
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 4</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <p class="date">2024</p>
                     <a href="https://drive.google.com/file/d/1qzfxnd48aOTi8ZweJk8TeOsZXe13u1HX/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
                 </div>
             </div>
