@@ -1,983 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHAHRIAR HOSSAIN RIMON</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #059669;
-            --secondary: #0d9488;
-            --accent: #0891b2;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --gradient-start: #047857;
-            --gradient-end: #0d9488;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--light);
-            overflow-x: hidden;
-        }
-
-        /* Animated Background */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f8fafc 100%);
-            opacity: 1;
-        }
-
-        .bg-animation::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(5, 150, 105, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
-        }
-
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            padding: 1rem 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(5, 150, 105, 0.1);
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-            transition: width 0.3s;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            margin-top: 60px;
-        }
-
-        .hero-content {
-            text-align: center;
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
-        }
-
-        .hero .tagline {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.2s backwards;
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            color: var(--text);
-            margin-bottom: 2rem;
-            animation: fadeInUp 1s ease 0.4s backwards;
-        }
-
-        .hero-description .highlight {
-            color: var(--primary);
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Coding Platforms */
-        .coding-platforms {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            margin-top: 2rem;
-            animation: fadeInUp 1s ease 0.6s backwards;
-        }
-
-        .platform-link {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            background: white;
-            border-radius: 50px;
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .platform-link:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .platform-icon {
-            width: 24px;
-            height: 24px;
-            object-fit: contain;
-        }
-
-        .platform-icon svg {
-            width: 24px;
-            height: 24px;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 5rem 0;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            position: relative;
-            display: inline-block;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 2px;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .skill-category:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .skill-category h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .skill-tag {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-
-        .project-showcase {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .project-showcase-image {
-            width: 100%;
-            height: 400px;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .project-showcase-content {
-            padding: 2rem;
-        }
-
-        .project-showcase-content h3 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .project-showcase-content p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        @media (max-width: 768px) {
-            .project-showcase {
-                grid-template-columns: 1fr;
-            }
-
-            .project-showcase-image {
-                height: 300px;
-            }
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .project-image {
-            width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-image-carousel {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .carousel-image {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            object-fit: contain;
-            padding: 20px;
-            opacity: 0;
-            animation: fadeInOut 12s ease-in-out infinite;
-        }
-
-        .carousel-image:nth-child(2) {
-            animation-delay: 3s;
-        }
-
-        .carousel-image:nth-child(3) {
-            animation-delay: 6s;
-        }
-
-        .carousel-image:nth-child(4) {
-            animation-delay: 9s;
-        }
-
-        @keyframes fadeInOut {
-            0% { opacity: 0; }
-            8% { opacity: 1; }
-            25% { opacity: 1; }
-            33% { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        .project-image-carousel img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .project-content {
-            padding: 1.5rem;
-        }
-
-        .project-content h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.4rem;
-        }
-
-        .project-content p {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-badge {
-            background: var(--light);
-            color: var(--primary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            padding: 0.6rem 1.5rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(4, 120, 87, 0.4);
-        }
-
-        .btn-secondary {
-            background: white;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        /* Achievements Section */
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .achievement-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .achievement-card::before {
-            content: '🏆';
-            position: absolute;
-            top: -20px;
-            right: -20px;
-            font-size: 5rem;
-            opacity: 0.1;
-        }
-
-        .achievement-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .achievement-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .achievement-card .date {
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .achievement-card p {
-            color: var(--text-light);
-        }
-        .achievement-card img {
-            width: 120px;
-            height: 120px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-
-        /* Certifications Section */
-        .certifications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .cert-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-top: 4px solid var(--primary);
-        }
-
-        .cert-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .cert-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.8rem;
-        }
-
-        .cert-card h3 {
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.2rem;
-        }
-
-        .cert-card .issuer {
-            color: var(--text-light);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .cert-card .date {
-            color: var(--accent);
-            font-size: 0.9rem;
-        }
-
-        /* Contact Section */
-        .contact {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            text-align: center;
-            padding: 5rem 2rem;
-        }
-
-        .contact h2 {
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .contact p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: white;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-            backdrop-filter: blur(10px);
-        }
-
-        .social-link:hover {
-            background: white;
-            color: var(--primary);
-            transform: scale(1.1);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        /* Footer contact link styles to ensure visibility */
-        footer .contact-links {
-            display: flex;
-            gap: 2rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-        }
-
-        footer .contact-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: all 0.3s;
-        }
-
-        footer .contact-links a:hover {
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        footer .contact-links svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s;
-        }
-
-        .contact-item:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: translateY(-5px);
-        }
-
-        .contact-item svg {
-            width: 24px;
-            height: 24px;
-            fill: white;
-        }
-
-        .contact-item a {
-            color: white;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Scroll to Top Button */
-        .scroll-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s;
-            z-index: 999;
-            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
-        }
-
-        .scroll-top.visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        .scroll-top:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Stats Section */
-        .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, rgba(4, 120, 87, 0.95), rgba(13, 148, 136, 0.95));
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s;
-            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.25);
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 12px 35px rgba(5, 150, 105, 0.4);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: white;
-            display: block;
-            margin-bottom: 0.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-        }
-
-        .stat-label {
-            color: white;
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        /* Mobile Menu */
-        .mobile-menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            padding: 5px;
-        }
-
-        .mobile-menu-toggle span {
-            width: 25px;
-            height: 3px;
-            background: var(--text);
-            border-radius: 3px;
-            transition: all 0.3s;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(8px, 8px);
-        }
-
-        .mobile-menu-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .mobile-menu-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px);
-        }
-
-        /* Enhanced Achievement Cards */
-        .achievement-card h3 {
-            color: var(--primary);
-            margin-top: 1rem;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .achievement-card .achievement-desc {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                width: 100%;
-                height: calc(100vh - 70px);
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 2rem;
-                transition: left 0.3s;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
-
-            nav ul.active {
-                left: 0;
-            }
-
-            .mobile-menu-toggle {
-                display: flex;
-            }
-
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.2rem;
-            }
-
-            .coding-platforms {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .projects-grid,
-            .achievements-grid,
-            .certifications-grid,
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-
-            .scroll-top {
-                bottom: 1rem;
-                right: 1rem;
-                width: 45px;
-                height: 45px;
-            }
-        }
-    </style>
+    <title>SHAHRIAR HOSSAIN RIMON | Portfolio</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-    <div class="bg-animation"></div>
 
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <div class="logo">SHAHRIAR HOSSAIN RIMON</div>
-            <div class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+<body>
+
+    <!-- Modern Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">SHAHRIAR<span class="text-gradient">.DEV</span></a>
+            <div class="mobile-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <ul id="navMenu">
-                <li><a href="#home" onclick="closeMobileMenu()">Home</a></li>
-                <li><a href="#skills" onclick="closeMobileMenu()">Skills</a></li>
-                <li><a href="#projects" onclick="closeMobileMenu()">Projects</a></li>
-                <li><a href="#achievements" onclick="closeMobileMenu()">Achievements</a></li>
-                <li><a href="#certifications" onclick="closeMobileMenu()">Certifications</a></li>
-                <li><a href="#contact" onclick="closeMobileMenu()">Contact</a></li>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>SHAHRIAR HOSSAIN RIMON</h1>
-            <p class="tagline">Full Stack Developer | Competitive Programmer | Machine Learning & AI Enthusiast</p>
-            <p class="hero-description">
-                Passionate about building scalable solutions and solving complex problems. 
-                Turning ideas into elegant code, one algorithm at a time.
-            </p>
-            <p class="hero-description">
-                I specialize in building modern web applications with <span class="highlight">Django REST Framework</span>, 
-                <span class="highlight">WebSockets</span>, and <span class="highlight">Redis</span> for real-time functionality. 
-                On the frontend, I create seamless experiences using <span class="highlight">Next.js</span>, 
-                <span class="highlight">TypeScript</span>, and <span class="highlight">3D animations</span>. 
-                Recently exploring <span class="highlight">Machine Learning</span> to integrate AI-powered features into web applications.
-            </p>
+    <!-- Modern Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-grid">
+            <div class="hero-content">
+                <span class="hero-subtitle">Portfolio 2026</span>
+                <h1>Hello, I'm <br><span class="text-gradient">Shahriar Hossain Rimon</span></h1>
+                <p class="hero-description">
+                    A passionate <strong>Full Stack Developer</strong> and <strong>Competitive Programmer</strong>
+                    specializing in scalable web apps with <span class="text-gradient">Django</span>, <span
+                        class="text-gradient">Next.js</span>, and <span class="text-gradient">Machine Learning</span>.
+                </p>
 
-            <!-- Stats -->
-            <div class="stats-container">
-                <div class="stat-card">
-                    <span class="stat-number">500+</span>
-                    <span class="stat-label">Problems Solved</span>
+                <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-bottom: 2rem;">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="#contact" class="btn btn-outline">Contact Me</a>
                 </div>
-                <div class="stat-card">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Projects Completed</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-number">10+</span>
-                    <span class="stat-label">Certifications</span>
+
+                <div class="coding-platforms">
+                    <a href="https://codeforces.com/profile/Shahriar.hossain" target="_blank" class="platform-link">
+                        <img src="https://cdn.iconscout.com/icon/free/png-256/free-codeforces-3628695-3029920.png"
+                            alt="Codeforces" style="width:20px;height:20px;"> Codeforces
+                    </a>
+                    <a href="https://leetcode.com/u/SHAHRIAR_HOSSAIN_RIMON/" target="_blank" class="platform-link">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+                            alt="LeetCode" style="width:20px;height:20px;"> LeetCode
+                    </a>
+                    <a href="https://www.codechef.com/users/shahriar09" target="_blank" class="platform-link">
+                        <img src="https://cdn.simpleicons.org/codechef" alt="CodeChef" style="width:20px;height:20px;">
+                        CodeChef
+                    </a>
                 </div>
             </div>
-            
-            <!-- Coding Platform Links -->
-            <div class="coding-platforms">
-                <a href="https://codeforces.com/profile/Shahriar.hossain" target="_blank" class="platform-link">
-                    <svg class="platform-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M4.5 7.5C5.328 7.5 6 6.828 6 6C6 5.172 5.328 4.5 4.5 4.5C3.672 4.5 3 5.172 3 6C3 6.828 3.672 7.5 4.5 7.5Z" fill="#F44336"/>
-                        <path d="M9 7.5C9.828 7.5 10.5 6.828 10.5 6C10.5 5.172 9.828 4.5 9 4.5C8.172 4.5 7.5 5.172 7.5 6C7.5 6.828 8.172 7.5 9 7.5Z" fill="#FFC107"/>
-                        <path d="M19.5 7.5C20.328 7.5 21 6.828 21 6C21 5.172 20.328 4.5 19.5 4.5C18.672 4.5 18 5.172 18 6C18 6.828 18.672 7.5 19.5 7.5Z" fill="#2196F3"/>
-                        <path d="M15 7.5C15.828 7.5 16.5 6.828 16.5 6C16.5 5.172 15.828 4.5 15 4.5C14.172 4.5 13.5 5.172 13.5 6C13.5 6.828 14.172 7.5 15 7.5Z" fill="#4CAF50"/>
-                        <path d="M4.5 19.5C5.328 19.5 6 18.828 6 18C6 17.172 5.328 16.5 4.5 16.5C3.672 16.5 3 17.172 3 18C3 18.828 3.672 19.5 4.5 19.5Z" fill="#F44336"/>
-                        <path d="M9 19.5C9.828 19.5 10.5 18.828 10.5 18C10.5 17.172 9.828 16.5 9 16.5C8.172 16.5 7.5 17.172 7.5 18C7.5 18.828 8.172 19.5 9 19.5Z" fill="#FFC107"/>
-                        <path d="M19.5 19.5C20.328 19.5 21 18.828 21 18C21 17.172 20.328 16.5 19.5 16.5C18.672 16.5 18 17.172 18 18C18 18.828 18.672 19.5 19.5 19.5Z" fill="#2196F3"/>
-                        <path d="M15 19.5C15.828 19.5 16.5 18.828 16.5 18C16.5 17.172 15.828 16.5 15 16.5C14.172 16.5 13.5 17.172 13.5 18C13.5 18.828 14.172 19.5 15 19.5Z" fill="#4CAF50"/>
-                    </svg>
-                    Codeforces
-                </a>
-                
-                <a href="https://leetcode.com/u/SHAHRIAR_HOSSAIN_RIMON/" target="_blank" class="platform-link">
-                    <svg class="platform-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z" fill="#FFA116"/>
-                    </svg>
-                    LeetCode
-                </a>
-                
-                <a href="https://www.codechef.com/users/shahriar09" target="_blank" class="platform-link">
-                    <svg class="platform-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.257.004c-.37.01-.735.04-1.1.095C4.814.815.815 4.813.1 10.157c-.715 5.344 2.632 10.284 7.738 11.44 5.105 1.156 10.284-2.632 11.44-7.738 1.156-5.106-2.632-10.284-7.738-11.44C10.75.17 9.997.004 9.257.004h2zm.01 1.626c.384-.01.768.01 1.146.062 4.542.624 7.684 4.815 7.06 9.357-.624 4.542-4.815 7.684-9.357 7.06-4.542-.624-7.684-4.815-7.06-9.357.563-4.096 4.096-7.122 8.211-7.122zm-1.562 2.5c-3.438 0-6.25 2.812-6.25 6.25s2.812 6.25 6.25 6.25 6.25-2.812 6.25-6.25-2.812-6.25-6.25-6.25zm0 1.875c2.408 0 4.375 1.967 4.375 4.375s-1.967 4.375-4.375 4.375-4.375-1.967-4.375-4.375 1.967-4.375 4.375-4.375z" fill="#5B4638"/>
-                    </svg>
-                    CodeChef
-                </a>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
+                        <div style="width:12px; height:12px; background:#ef4444; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#f59e0b; border-radius:50%;"></div>
+                        <div style="width:12px; height:12px; background:#22c55e; border-radius:50%;"></div>
+                    </div>
+                    <code style="font-family: 'Courier New', monospace; font-size: 0.9rem; color: #334155;">
+                        <span style="color:#8b5cf6">const</span> <span style="color:#3b82f6">developer</span> = {<br>
+                        &nbsp;&nbsp;name: <span style="color:#10b981">'Shahriar'</span>,<br>
+                        &nbsp;&nbsp;skills: [<span style="color:#10b981">'Full Stack'</span>, <span style="color:#10b981">'AI/ML'</span>],<br>
+                        &nbsp;&nbsp;hardWorker: <span style="color:#f59e0b">true</span><br>
+                        };
+                    </code>
+                </div>
             </div>
         </div>
-    </section>
+    </header>
 
-    <!-- Skills Section -->
+    <!-- Original Skills Section -->
     <section id="skills">
         <div class="container">
             <h2 class="section-title">Skills & Expertise</h2>
@@ -1044,7 +159,7 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
+    <!-- Original Projects Section -->
     <section id="projects" style="background: white;">
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
@@ -1052,14 +167,20 @@
                 <div class="project-showcase">
                     <div class="project-showcase-image">
                         <div class="project-image-carousel">
-                            <img class="carousel-image" src="PICTURES PROJECT 1/sportsgear2.png" alt="SportsGear View 1" />
-                            <img class="carousel-image" src="PICTURES PROJECT 1/sportsgear4.png" alt="SportsGear View 2" />
-                            <img class="carousel-image" src="PICTURES PROJECT 1/Screenshot 2026-02-06 042143.png" alt="SportsGear View 3" />
+                            <img class="carousel-image" src="PICTURES PROJECT 1/sportsgear2.png"
+                                alt="SportsGear View 1" />
+                            <img class="carousel-image" src="PICTURES PROJECT 1/sportsgear4.png"
+                                alt="SportsGear View 2" />
+                            <img class="carousel-image" src="PICTURES PROJECT 1/Screenshot 2026-02-06 042143.png"
+                                alt="SportsGear View 3" />
                         </div>
                     </div>
                     <div class="project-showcase-content">
                         <h3>SportsGear</h3>
-                        <p>An innovative e-commerce platform for sports equipment and apparel. Built with modern technologies to provide a seamless shopping experience with real-time inventory management and secure transactions. This platform integrates a robust backend system with an intuitive frontend interface to deliver excellence in every interaction.</p>
+                        <p>An innovative e-commerce platform for sports equipment and apparel. Built with modern
+                            technologies to provide a seamless shopping experience with real-time inventory management
+                            and secure transactions. This platform integrates a robust backend system with an intuitive
+                            frontend interface to deliver excellence in every interaction.</p>
                         <div class="project-tech">
                             <span class="tech-badge">Python</span>
                             <span class="tech-badge">PostgreSQL</span>
@@ -1067,7 +188,8 @@
                             <span class="tech-badge">TypeScript</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/SHAHRIAR-HOSSAIN-RIMON/sportsgear" target="_blank" class="btn btn-secondary">View GitHub</a>
+                            <a href="https://github.com/SHAHRIAR-HOSSAIN-RIMON/sportsgear" target="_blank"
+                                class="btn btn-secondary">View GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1077,13 +199,18 @@
                         <div class="project-image-carousel">
                             <img class="carousel-image" src="projcet2/knowdlegehbub1.png" alt="KnowledgeHub View 1" />
                             <img class="carousel-image" src="projcet2/KNOWLDGEHUB2.png" alt="KnowledgeHub View 2" />
-                            <img class="carousel-image" src="projcet2/Screenshot 2026-02-08 012221.png" alt="KnowledgeHub View 3" />
-                            <img class="carousel-image" src="projcet2/Screenshot 2026-02-08 012243.png" alt="KnowledgeHub View 4" />
+                            <img class="carousel-image" src="projcet2/Screenshot 2026-02-08 012221.png"
+                                alt="KnowledgeHub View 3" />
+                            <img class="carousel-image" src="projcet2/Screenshot 2026-02-08 012243.png"
+                                alt="KnowledgeHub View 4" />
                         </div>
                     </div>
                     <div class="project-showcase-content">
                         <h3>KnowledgeHub</h3>
-                        <p>A comprehensive knowledge sharing and learning platform that connects learners with experts. Featuring real-time collaboration, interactive content delivery, and personalized learning paths. Built with a modern tech stack to ensure scalability, performance, and an exceptional user experience that empowers educational growth.</p>
+                        <p>A comprehensive knowledge sharing and learning platform that connects learners with experts.
+                            Featuring real-time collaboration, interactive content delivery, and personalized learning
+                            paths. Built with a modern tech stack to ensure scalability, performance, and an exceptional
+                            user experience that empowers educational growth.</p>
                         <div class="project-tech">
                             <span class="tech-badge">Django</span>
                             <span class="tech-badge">PostgreSQL</span>
@@ -1091,7 +218,8 @@
                             <span class="tech-badge">React</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://github.com/SHAHRIAR-HOSSAIN-RIMON/KnowledgeHubFull" target="_blank" class="btn btn-secondary">View GitHub</a>
+                            <a href="https://github.com/SHAHRIAR-HOSSAIN-RIMON/KnowledgeHubFull" target="_blank"
+                                class="btn btn-secondary">View GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -1099,7 +227,7 @@
         </div>
     </section>
 
-    <!-- Achievements Section -->
+    <!-- Original Achievements Section -->
     <section id="achievements">
         <div class="container">
             <h2 class="section-title">Achievements</h2>
@@ -1107,19 +235,21 @@
                 <div class="achievement-card">
                     <img src="ACHIEVEMNT/e35916e7-ea4c-4ef1-9dea-71f50e8ecd00.jpg" alt="Dean Award 1" />
                     <h3>Dean's List Award</h3>
-                    <p class="achievement-desc">Recognized for outstanding academic performance and maintaining exceptional GPA throughout the semester.</p>
+                    <p class="achievement-desc">Recognized for outstanding academic performance and maintaining
+                        exceptional GPA throughout the semester.</p>
                 </div>
 
                 <div class="achievement-card">
                     <img src="ACHIEVEMNT/image.png" alt="Dean Award 2" />
                     <h3>Academic Excellence</h3>
-                    <p class="achievement-desc">Honored for consistent academic excellence and dedication to learning in computer science and engineering.</p>
+                    <p class="achievement-desc">Honored for consistent academic excellence and dedication to learning in
+                        computer science and engineering.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Certifications Section -->
+    <!-- Original Certifications Section -->
     <section id="certifications" style="background: white;">
         <div class="container">
             <h2 class="section-title">Certifications</h2>
@@ -1128,85 +258,111 @@
                     <div class="cert-icon">🤖</div>
                     <h3>Generative AI Bootcamp</h3>
                     <p class="issuer">LinkedIn Learning</p>
-                    <a href="https://www.linkedin.com/learning/certificates/ca4cc32ebfb2e6d11da08facecc6c8fecfcdd21e34b56cf708b3ef17022788c6" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://www.linkedin.com/learning/certificates/ca4cc32ebfb2e6d11da08facecc6c8fecfcdd21e34b56cf708b3ef17022788c6"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon">🛡️</div>
                     <h3>Cybersecurity Essentials</h3>
                     <p class="issuer">LinkedIn Learning</p>
-                    <a href="https://www.linkedin.com/learning/certificates/2d6613b5f0c558dca13a48bcebd5b0d8c9e37333ace67e0fbfef4c00e824937d?trk=share_certificate" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://www.linkedin.com/learning/certificates/2d6613b5f0c558dca13a48bcebd5b0d8c9e37333ace67e0fbfef4c00e824937d?trk=share_certificate"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon">⚙️</div>
                     <h3>MicroOps</h3>
                     <p class="issuer">Professional Certification</p>
-                    <a href="https://drive.google.com/file/d/1tJBE61HizLXcM01yX7mi-2s3FS-35Fzq/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://drive.google.com/file/d/1tJBE61HizLXcM01yX7mi-2s3FS-35Fzq/view?usp=sharing"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 1</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <a href="https://drive.google.com/file/d/1d889Oqzilb9v9M4lPahk5G4fhz_MPaPk/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://drive.google.com/file/d/1d889Oqzilb9v9M4lPahk5G4fhz_MPaPk/view?usp=sharing"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 2</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <a href="https://drive.google.com/file/d/1JCCET2saiLcqKsagYeih3ZabhHaiofVk/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://drive.google.com/file/d/1JCCET2saiLcqKsagYeih3ZabhHaiofVk/view?usp=sharing"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 3</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <a href="https://drive.google.com/file/d/1-rHUD3NshZyFCCQmfmQjL8sjWO1OaBKb/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://drive.google.com/file/d/1-rHUD3NshZyFCCQmfmQjL8sjWO1OaBKb/view?usp=sharing"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
 
                 <div class="cert-card">
                     <div class="cert-icon">🏆</div>
                     <h3>Hackathon Certificate 4</h3>
                     <p class="issuer">Hackathon Participation</p>
-                    <a href="https://drive.google.com/file/d/1qzfxnd48aOTi8ZweJk8TeOsZXe13u1HX/view?usp=sharing" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View Certificate</a>
+                    <a href="https://drive.google.com/file/d/1qzfxnd48aOTi8ZweJk8TeOsZXe13u1HX/view?usp=sharing"
+                        target="_blank"
+                        style="color: var(--primary); text-decoration: none; font-weight: 600; display: block; margin-top: 1rem;">View
+                        Certificate</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Original Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
             <p>Let's connect and build something amazing together!</p>
-            
+
             <div class="contact-info">
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="white" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        <path fill="white"
+                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
                     </svg>
                     <a href="mailto:mdshrhussain@gmail.com">mdshrhussain@gmail.com</a>
                 </div>
 
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="white" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                        <path fill="white"
+                            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
                     </svg>
                     <a href="https://wa.me/8801812724420" target="_blank">+880 1812 724420</a>
                 </div>
 
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="white" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        <path fill="white"
+                            d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                     </svg>
-                    <a href="https://www.linkedin.com/in/shahriar-hossain-rimon-6545872b9/" target="_blank">LinkedIn Profile</a>
+                    <a href="https://www.linkedin.com/in/shahriar-hossain-rimon-6545872b9/" target="_blank">LinkedIn
+                        Profile</a>
                 </div>
 
                 <div class="contact-item">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path fill="white" d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                        <path fill="white"
+                            d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
                     </svg>
                     <a href="https://github.com/SHAHRIAR-HOSSAIN-RIMON" target="_blank">GitHub Profile</a>
                 </div>
@@ -1214,108 +370,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Original Footer -->
     <footer>
         <div class="container" style="display:flex;flex-direction:column;gap:1.5rem;align-items:center;">
-            <div class="contact-links">
-                <a href="https://wa.me/8801812724420" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-                    </svg>
-                    WhatsApp
-                </a>
-                <a href="https://www.linkedin.com/in/shahriar-hossain-rimon-6545872b9/" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                    </svg>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/SHAHRIAR-HOSSAIN-RIMON" target="_blank">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                    </svg>
-                    GitHub
-                </a>
-            </div>
             <p style="margin:0">&copy; 2026 SHAHRIAR HOSSAIN RIMON. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Scroll to Top Button -->
-    <div class="scroll-top" id="scrollTop" onclick="scrollToTop()">
+    <!-- Scroll Top -->
+    <div class="scroll-top">
         ↑
     </div>
 
-    <script>
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            navMenu.classList.toggle('active');
-            toggle.classList.toggle('active');
-        }
-
-        function closeMobileMenu() {
-            const navMenu = document.getElementById('navMenu');
-            const toggle = document.querySelector('.mobile-menu-toggle');
-            navMenu.classList.remove('active');
-            toggle.classList.remove('active');
-        }
-
-        // Scroll to Top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Show/Hide Scroll to Top Button
-        window.addEventListener('scroll', function() {
-            const scrollTop = document.getElementById('scrollTop');
-            if (window.pageYOffset > 300) {
-                scrollTop.classList.add('visible');
-            } else {
-                scrollTop.classList.remove('visible');
-            }
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add scroll-based animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe all cards
-        document.querySelectorAll('.skill-category, .project-card, .achievement-card, .cert-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'all 0.6s ease';
-            observer.observe(el);
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="js/scripts.js"></script>
 </body>
+
 </html>
